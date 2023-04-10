@@ -11,4 +11,15 @@ const addSchema = Joi.object({
     .required(),
 });
 
-module.exports = { addSchema };
+const updateSchema = Joi.object({
+  name: Joi.string().min(5).max(15).trim().optional(),
+  email: Joi.string().email().trim().optional(),
+  phone: Joi.string()
+    .min(10)
+    .max(15)
+    .regex(/^[+]?[(]?[0-9]{3}[)]?[-\s.]?[0-9]{3}[-\s.]?[0-9]{4,6}$/)
+    .trim()
+    .optional(),
+});
+
+module.exports = { addSchema, updateSchema };
