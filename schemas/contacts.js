@@ -9,6 +9,7 @@ const addSchema = Joi.object({
     .regex(/^[+]?[(]?[0-9]{3}[)]?[-\s.]?[0-9]{3}[-\s.]?[0-9]{4,6}$/)
     .trim()
     .required(),
+  favorite: Joi.boolean(),
 });
 
 const updateSchema = Joi.object({
@@ -20,6 +21,11 @@ const updateSchema = Joi.object({
     .regex(/^[+]?[(]?[0-9]{3}[)]?[-\s.]?[0-9]{3}[-\s.]?[0-9]{4,6}$/)
     .trim()
     .optional(),
+  favorite: Joi.boolean(),
 });
 
-module.exports = { addSchema, updateSchema };
+const updateFavoriteSchema = Joi.object({
+  favorite: Joi.boolean().required(),
+});
+
+module.exports = { addSchema, updateSchema, updateFavoriteSchema };
