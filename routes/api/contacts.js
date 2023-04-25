@@ -10,6 +10,8 @@ const router = express.Router();
 
 router.get('/', authenticate, ctrl.getAllContacts);
 
+router.get('/:id', authenticate, ctrl.getById);
+
 router.post('/', authenticate, validateBody(schemas.addSchema), ctrl.add);
 
 router.put(
